@@ -1,2 +1,2 @@
 # VoiLT
-Lightweight cloud storage and retrieval solution.
+Lightweight web server designed for portablility and ease of use
