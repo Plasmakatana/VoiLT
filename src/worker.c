@@ -241,6 +241,9 @@ int worker_init(worker_t *worker, int server_fd, int cpu_id) {
     cpu_set_t cpuset;
     CPU_ZERO(&cpuset);
     CPU_SET(cpu_id, &cpuset);
+    //for android termux servers find allowed CPU cores' numbers = {n,m,...} and only set those
+    //CPU_SET(n,&cpuset);
+    //CPU_SET(m,&cpuset);...
     if (sched_setaffinity(0, sizeof(cpuset), &cpuset) == -1) {
         LOG_ERROR("Failed to set CPU affinity: %s", strerror(errno));
         return -1;
