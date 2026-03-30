@@ -1,5 +1,8 @@
 # VoiLT
 HTTP server written purely in C language. Lightning fast, reliable and portable.
+## Features
+- Cross platform: Linux, Windows, MacOS, Android
+- Highly concurrent: A mobile device is enough to serve thousands
 ## Getting started
 Clone the repository
 ```bash
