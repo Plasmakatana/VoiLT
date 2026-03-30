@@ -14,6 +14,7 @@ mkdir build && cd build
 cmake ..
 make $(nproc)
 ```
+NOTE:For android(Termux) server, set affinity for specific cores allowed by android like shown in the source-code and then build
 ## Usage
 - Navigate to directory containing VoiLT executable binary
 - Type:
