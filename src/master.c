@@ -109,7 +109,9 @@ static int set_worker_cpu_affinity(int worker_id) {
     cpu_set_t cpuset;
     CPU_ZERO(&cpuset);
     CPU_SET(cpu_id, &cpuset);
-
+    //for android termux servers find allowed CPU cores' numbers = {n,m,...}
+    //CPU_SET(n,&cpuset);
+    //CPU_SET(m,&cpuset);...
     if (sched_setaffinity(0, sizeof(cpuset), &cpuset) == -1) {
         LOG_WARN("Failed to set CPU affinity for worker %d: %s", 
                 worker_id, strerror(errno));
