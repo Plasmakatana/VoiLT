@@ -305,13 +305,13 @@ void http_create_response(http_response_t *response, int status_code) {
     http_add_header(response, "X-Frame-Options", "DENY");
     http_add_header(response, "X-XSS-Protection", "1; mode=block");
     http_add_header(response, "Referrer-Policy", "strict-origin-when-cross-origin");
-    http_add_header(response, "Content-Security-Policy", "default-src 'self'");
+    http_add_header(response, "Content-Security-Policy", "default-src 'self' 'unsafe-inline' ;style-src 'self' 'unsafe-inline';style-src-elem 'self' 'unsafe-inline'");
  
     // Reduced information disclosure - no server header
 }
 
 void http_add_header(http_response_t *response, const char *name, const char *value) {
-    if (response->header_count < MAX_HEADERS) {
+   if (response->header_count < MAX_HEADERS) {
         strncpy(response->headers[response->header_count][0], name, MAX_HEADER_SIZE - 1);
         strncpy(response->headers[response->header_count][1], value, MAX_HEADER_SIZE - 1);
         response->header_count++;
