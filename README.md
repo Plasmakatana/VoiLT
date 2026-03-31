@@ -12,8 +12,8 @@ pacman -S zlib cmake git base-devel
 #Debian/Ubuntu
 apt install build-essential cmake libz-dev
 ```
-- Similar for other distros
-Clone the repository
+Similar for other distros
+- Clone the repository
 ```bash
 git clone https://github.com/Plasmakatana/VoiLT.git
 ```
