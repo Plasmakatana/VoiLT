@@ -1,0 +1,13 @@
+[package]
+name = "reverse-proxy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait="0.1"
+pingora = {version= "0.8.0", features= ["lb"]}
+pingora-core = "0.8.0"
+pingora-limits = "0.8.0"
+pingora-load-balancing= "0.8.0"
+pingora-proxy = "0.8.0"
+once_cell = "1.19.0"
