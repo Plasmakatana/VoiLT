@@ -12,8 +12,9 @@ WORKDIR /VoiLT
 # Clone your GitHub repository (replace URL with your own)
 RUN git clone https://github.com/Plasmakatana/VoiLT.git .
 # Create and move into build directory
+RUN cd server
 RUN mkdir -p build
-WORKDIR /VoiLT/build
+WORKDIR /VoiLT/server/build
 # Run CMake & build
 RUN cmake .. \
     && make -j$(nproc)
@@ -30,13 +31,13 @@ RUN pacman -Sy --noconfirm \
 # Create app directory
 WORKDIR /VoiLT
 # Copy built binary from builder
-COPY --from=builder /VoiLT/static/* /VoiLT/static/
+COPY --from=builder /VoiLT/server/static/* /VoiLT/server/static/
 # Copy config if needed
-COPY --from=builder /VoiLT/server.conf .
-RUN chmod 664 ./static/*
-COPY --from=builder /VoiLT/build/VoiLT /VoiLT/static/
+COPY --from=builder /VoiLT/server/server.conf /VoiLT/server/
+RUN chmod 664 ./server/static/*
+COPY --from=builder /VoiLT/server/build/VoiLT /VoiLT/server/static/
 # Expose port if needed (optional, e.g., 8080)
 EXPOSE 8080
-WORKDIR /VoiLT/static
+WORKDIR /VoiLT/server/static
 # Run service
 CMD ["./VoiLT","../server.conf","-d"]
