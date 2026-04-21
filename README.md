@@ -59,7 +59,30 @@ cargo run
 ## Note
 The servers, by default run on port ```8080``` and the load-balancer, by default runs on port ```10000```
 You can change these by configuring ```server/server.conf``` and ```reverse-proxy/src/main.rs```
+## Usage (Releases)
+- Download latest release for your preferred platform
+- Extract the release to a folder
+- if ```run.sh``` is not executable, type 
+  ```bash
+  sudo chmod +x run.sh
+  ```
+  similar for all other ```*.sh``` files
+- Configure ```reverseproxy/upstreams.conf``` to include all services running on your local network
+- Execute ```./run.sh```
+- This will automatically start your local server on port 8080, load balancer on port 10000 and will create a cloudflare tunnel to enable TLS based encryption on a publically available domain provided by cloudflare
+- To use your own domain use Stunnel, NGINX or other similar services
+- You now have a TLS-complete website running!
+- If you want to run only the webserver locally, navigate to ```/server/``` and then execute
+```bash
+run_server.sh
+```
+- If you want to run only load-balancer locally, navigate to ```/loadbalancer/``` and then execute
+```bash
+run_proxy.sh
+```
+after configuring the upstreams.conf file for your own network's running webservers
+- Modify and tweak ```run.sh```, ```run_server.sh```& ```run_proxy.sh``` to run any combination of the 3 services (http, load-balancer, tunnel)
+  
 ## Future plans:
 - Support for services other than HTTP
-- SSL/TLS
 - WASM version
