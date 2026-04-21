@@ -43,7 +43,20 @@ brew install cmake rust
 ### Android
 - Install termux
 - Follow the same steps as linux build-procedure
-NOTE:For Android(Termux) server, set affinity for specific cores allowed by android like shown in the source-code and then build
+NOTE:For Android(Termux) server, set affinity for specific cores allowed by android 
+```bash
+cat /prox/self/status | grep Cpus
+```
+Look at output. If it is of the form ```0-3``` this means that CPU ```0,1,2,3``` are allowed
+For no. of  CPU-ids = ```n``` : manually change line inside ```src/master.c``` 
+```c
+cpu_id = worker_id % n;
+```
+instead of
+```c
+cpu_id= worker_id % num_cpus;
+```
+and then build binary
 ## Usage
 - Navigate to directory containing VoiLT executable binary
 - Type:
