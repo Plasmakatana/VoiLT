@@ -68,7 +68,10 @@ You can change these by configuring ```server/server.conf``` and ```reverse-prox
   ```
   similar for all other ```*.sh``` files
 - Configure ```reverseproxy/upstreams.conf``` to include all services running on your local network
-- Execute ```./run.sh```
+- Execute 
+```bash
+./run.sh
+```
 - This will automatically start your local server on port 8080, load balancer on port 10000 and will create a cloudflare tunnel to enable TLS based encryption on a publically available domain provided by cloudflare
 - To use your own domain use Stunnel, NGINX or other similar services
 - You now have a TLS-complete website running!
