@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiLT — About</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #f7f7f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 2.5rem 3rem 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      font-size: 0.82rem;
+      color: #888;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-left: 2rem;
+      transition: color 0.15s;
+    }
+
+    nav a:hover, nav a.active { color: #1a1a1a; }
+
+    main {
+      flex: 1;
+      padding: 5rem 3rem 3rem;
+      max-width: 680px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: #d0d0ce;
+      margin-bottom: 2.5rem;
+    }
+
+    .link-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 260px;
+      padding: 0.7rem 1.1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #2a2a2a;
+      background: transparent;
+      border: 0.5px solid #c0c0be;
+      border-radius: 2px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .link-btn:hover {
+      background: #efefec;
+      border-color: #999;
+    }
+
+    .link-btn .arrow {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    footer {
+      padding: 2rem 3rem;
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo">VoiLT</span>
+    <nav>
+      <a href="index.html">Index</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="section-label">Links</div>
+    <div class="divider"></div>
+
+    <div class="link-group">
+      <a class="link-btn" href="https://github.com/Plasmakatana" target="_blank" rel="noopener">
+        <span>GitHub</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-btn" href="https://linkedin.com/in/almaas-rizvi-b79a892a1" target="_blank" rel="noopener">
+        <span>LinkedIn</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-btn" href="https://twitter.com/0xa1maa5" target="_blank" rel="noopener">
+        <span>Twitter</span>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>2026 &mdash; Plasmakatana</footer>
+
+</body>
+</html>

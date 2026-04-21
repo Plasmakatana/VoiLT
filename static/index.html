@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiLT</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #f7f7f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 2.5rem 3rem 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      font-size: 0.82rem;
+      color: #888;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-left: 2rem;
+      transition: color 0.15s;
+    }
+
+    nav a:hover, nav a.active { color: #1a1a1a; }
+
+    main {
+      flex: 1;
+      padding: 5rem 3rem 3rem;
+      max-width: 680px;
+    }
+
+    .time {
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .date-label {
+      font-size: 0.78rem;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3.5rem;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: #d0d0ce;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-block {
+      margin-bottom: 2rem;
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: #2a2a2a;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #555;
+      border: 0.5px solid #ccc;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 2rem 3rem;
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo">VoiLT</span>
+    <nav>
+      <a href="index.html" class="active">Index</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="time" id="clock">--:--:--</div>
+    <div class="date-label" id="date-label">--</div>
+
+    <div class="divider"></div>
+
+    <div class="info-block">
+      <div class="info-label">Server</div>
+      <div class="info-value">VoiLT</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Running on</div>
+      <div class="info-value">PC</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Features</div>
+      <div class="features-list">
+        <span class="tag">Lightweight</span>
+        <span class="tag">Superfast</span>
+        <span class="tag">Secure</span>
+        <span class="tag">Highly Concurrent</span>
+        <span class="tag">Portable</span>
+        <span class="tag">Customizable</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>2026 &mdash; Plasmakatana</footer>
+
+  <script>
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var now = new Date();
+      var h = pad(now.getHours());
+      var m = pad(now.getMinutes());
+      var s = pad(now.getSeconds());
+      document.getElementById('clock').textContent = h + ':' + m + ':' + s;
+
+      var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var label = days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate() + ' ' + now.getFullYear();
+      document.getElementById('date-label').textContent = label;
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+
+</body>
+</html>
