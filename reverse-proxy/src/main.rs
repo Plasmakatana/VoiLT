@@ -5,12 +5,29 @@ use pingora::prelude::*;
 use pingora_core::services::background::background_service;
 use std::{sync::Arc, time::Duration};
 use pingora_load_balancing::{selection::RoundRobin, LoadBalancer};
+use std::fs::File;
+use std::io::{BufRead,BufReader};
+
+fn load_upstreams_from_file(path: &str) -> Result<Vec<String>, std::io::Error> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+
+    let upstreams = reader
+        .lines()
+        .filter_map(|line| line.ok())
+        .map(|line| line.trim().to_string())
+        .filter(|line| !line.is_empty() && !line.starts_with('#'))
+        .collect();
+
+    Ok(upstreams)
+}
 
 fn main() {
     let mut my_server = Server::new(None).unwrap();
     my_server.bootstrap();
-
-    let mut upstreams = LoadBalancer::try_from_iter(["192.168.29.21:8080","192.168.29.242:8080"]).unwrap();
+    let upstream_list = load_upstreams_from_file("upstreams.conf")
+        .expect("Failed to read upstream config");
+    let mut upstreams = LoadBalancer::try_from_iter(upstream_list).expect("Invalid upstream format");
     let hc = TcpHealthCheck::new();
     upstreams.set_health_check(hc);
     upstreams.health_check_frequency = Some(Duration::from_secs(1));
